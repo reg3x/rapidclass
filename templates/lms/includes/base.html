@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    {%load staticfiles%}
+    <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap-theme.min.css'%}">
+    <script src="{% static 'jquery/dist/jquery.min.js'%}"></script>
+    <script src="{% static 'bootstrap/dist/js/bootstrap.min.js'%}"></script>
+    <title></title>
+</head>
+
+{% include 'navbar.html' %}
+
+
+<body>
+
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
