@@ -1,0 +1,18 @@
+{
+  "name": "rapidclass",
+  "version": "0.0.0",
+  "homepage": "https://github.com/reg3x/rapidclass",
+  "authors": [
+    "reg3x <diegoaguilera85@gmail.com>"
+  ],
+  "description": "fast simple lms",
+  "main": "manage.py",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
