@@ -11,4 +11,5 @@ class Home(TemplateView):
         context['message']='Welcome to RapidClass 0.1'
         context['teachers'] = Teacher.objects.all()
         context['subjects'] = Subject.objects.all()
+        context['classes'] = Class.objects.all()
         return context

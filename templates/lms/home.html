@@ -1,8 +1,18 @@
 
 {% extends 'base.html'%}
 {% block content %}
-        <div class="well">
-            {{message}}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    {% include 'navpanel.html' %}
+                </div>
+                <div class="col-md-8">
+                        {% include 'mainpanel.html' %}
+                </div>
+                <div class="col-md-2">
+                    {% include 'calpanel.html' %}
+                </div>
+            </div>
         </div>
 
 {%endblock%}
