@@ -7,7 +7,13 @@
                     {% include 'navpanel.html' %}
                 </div>
                 <div class="col-md-8">
+                    {% if class %}
+                    <p>existe class</p><br>
                         {% include 'mainpanel.html' %}
+                    {% else %}
+                    <p>no existe class</p>
+                        <div class="well" >Bienvenido al sistema</div>
+                    {% endif %}
                 </div>
                 <div class="col-md-2">
                     {% include 'calpanel.html' %}

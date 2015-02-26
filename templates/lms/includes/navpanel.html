@@ -1,12 +1,12 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        Navegation
+        Courses
     </div>
     <div class="panel-body">
         <div class="panel-body">
             <ul class="list-group">
-                {% for class in classes %}
-                    <li class="list-group-item">{{class.title}}</li>
+                {% for class in list_class %}
+                    <li class="list-group-item"><a href="{{class.get_absolute_url}}">{{class.title}} </a> </li>
                 {% endfor %}
             </ul>
         </div>

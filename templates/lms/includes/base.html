@@ -7,11 +7,17 @@
     <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap-theme.min.css'%}">
     <script src="{% static 'jquery/dist/jquery.min.js'%}"></script>
     <script src="{% static 'bootstrap/dist/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'jquery-ui/jquery-ui.min.js'%}"></script>
+    <script>
+      $(function() {
+        $( "#accordion" ).accordion();
+      });
+    </script>
     <title></title>
 </head>
 
-{% include 'navbar.html' %}
 
+{% include 'navbar.html' %}
 
 <body>
 

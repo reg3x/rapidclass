@@ -1,31 +1,30 @@
-
-{% for class in classes %}
 <div class="panel panel-default">
-    <div class="panel-heading">
-        {{class.title}}
-    </div>
+    <div class="panel-heading">{{class.title}}</div>
     <div class="panel-body">
-        <div class="panel-heading">
-            1st Test
-        </div>
+        {% if evaluations %}
+        <div class="panel panel-default">
+
+            {% for eval in evaluations%}
+            <div class="panel-heading">{{eval.number_eval}} Parcial</div>
             <div class="panel-body">
-                <h3>Forum</h3>
-                <div class="container-fluid">
-                    <ul class="list-group">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
-                    </ul>
+                {% if files %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">Files</div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            {% for file in files %}
+                                {% if file.evaluation_id.evaluation_id == eval.evaluation_id %}
+                                <li class="list-group-item"><a href="{{file.doc_file.url}}">{{file.doc_file.name}}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+
+                    </div>
                 </div>
-                <h3>Files</h3>
-                <div class="container-fluid">
-                    <ul class="list-group">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
-                    </ul>
-                </div>
+                {% endif %}
             </div>
+            {% endfor %}
+         </div>
+        {% endif %}
     </div>
 </div>
-{% endfor %}
