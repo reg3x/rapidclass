@@ -1,15 +1,32 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView
-from models import Teacher, Class, Subject
+from django.views.generic import TemplateView, DetailView
+from models import Class, File, Evaluation, Subject, Teacher
 
-# Create your views here.
-class Home(TemplateView):
+
+class NavPanelMixin(object):
+    def get_context_data(self, **kwargs):
+        context = super(NavPanelMixin, self).get_context_data()
+        context['list_class'] = Class.objects.all()
+        return context
+
+class NavBarMixin(object):
+    def get_context_data(self, **kwargs):
+        context = super(NavBarMixin, self).get_context_data()
+        context['subjects'] = Subject.objects.all()
+        context['teachers'] = Teacher.objects.all()
+        return context
+
+
+class ClassDetail(NavBarMixin, NavPanelMixin, DetailView):
+    model = Class
     template_name = 'home.html'
 
     def get_context_data(self, **kwargs):
-        context = super(Home, self).get_context_data()
-        context['message']='Welcome to RapidClass 0.1'
-        context['teachers'] = Teacher.objects.all()
-        context['subjects'] = Subject.objects.all()
-        context['classes'] = Class.objects.all()
+        context = super(ClassDetail, self).get_context_data()
+        # context['files'] = File.objects.filter(evaluation_id=self.object)
+        context['files'] = File.objects.filter(evaluation_id__class_id=self.object.class_id)
+        context['evaluations'] = Evaluation.objects.filter(class_id=self.object.class_id)
         return context
+
+
+class Home(NavPanelMixin, TemplateView):
+    template_name = 'home.html'
