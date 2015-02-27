@@ -28,5 +28,5 @@ class ClassDetail(NavBarMixin, NavPanelMixin, DetailView):
         return context
 
 
-class Home(NavPanelMixin, TemplateView):
+class Home(NavBarMixin, NavPanelMixin, TemplateView):
     template_name = 'home.html'
