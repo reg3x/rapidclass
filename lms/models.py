@@ -23,9 +23,15 @@ class Subject(models.Model):
     description = models.CharField(max_length=30)
     notes = models.CharField(max_length=30, null=True, blank=True)
     date_added = models.DateField()
+    slug = models.SlugField(max_length=30, unique=True)
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(unicode(self.name))
+        super(Subject, self).save(*args, **kwargs)
 
 
 class Student(models.Model):
@@ -68,7 +74,7 @@ class Class(models.Model):
         super(Class, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('home_view', args=[str(self.slug)])
+        return reverse('class_view', args=[str(self.slug)])
 
 
 class Evaluation(models.Model):
